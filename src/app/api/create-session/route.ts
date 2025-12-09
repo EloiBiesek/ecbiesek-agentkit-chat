@@ -4,6 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 const SESSION_COOKIE_NAME = "chatkit_session_id";
 const SESSION_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 30; // 30 days
 const DEFAULT_CHATKIT_BASE = "https://api.openai.com";
+const FALLBACK_WORKFLOW_ID =
+  "wf_6937702f3d8c8190acf7661cc70844170605978c093b1063";
 
 const isProd = () => (process.env.NODE_ENV || "").toLowerCase() === "production";
 
@@ -101,7 +103,7 @@ function resolveWorkflowId(body: unknown): string | null {
   const envWorkflow =
     process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID ||
     process.env.CHATKIT_WORKFLOW_ID ||
-    "";
+    FALLBACK_WORKFLOW_ID;
 
   if (body && typeof body === "object") {
     const maybeWorkflow =

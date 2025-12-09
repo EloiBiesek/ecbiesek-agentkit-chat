@@ -1,13 +1,12 @@
+const FALLBACK_WORKFLOW_ID =
+  "wf_6937702f3d8c8190acf7661cc70844170605978c093b1063";
+
 const readEnvString = (value: unknown): string | undefined =>
   typeof value === "string" && value.trim() ? value.trim() : undefined;
 
-export const workflowId = (() => {
-  const id = readEnvString(process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID);
-  if (!id) {
-    throw new Error("Set NEXT_PUBLIC_CHATKIT_WORKFLOW_ID in your environment.");
-  }
-  return id;
-})();
+export const workflowId =
+  readEnvString(process.env.NEXT_PUBLIC_CHATKIT_WORKFLOW_ID) ||
+  FALLBACK_WORKFLOW_ID;
 
 export function createClientSecretFetcher(
   workflow: string,
