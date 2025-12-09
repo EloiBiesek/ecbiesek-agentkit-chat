@@ -80,6 +80,7 @@ main.page {
 .chatkit-shell {
   background: #ffffff;
   border-radius: 18px;
+  min-height: 480px;
   height: min(80vh, 800px);
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.04);
@@ -88,6 +89,39 @@ main.page {
 .chatkit-frame {
   height: 100%;
   width: 100%;
+}
+
+.chatkit-fallback {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem;
+  color: #111827;
+}
+
+.fallback-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.fallback-sub {
+  color: rgba(17, 24, 39, 0.7);
+  line-height: 1.4;
+}
+
+.fallback-log {
+  background: #f3f4f6;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  color: #111827;
+  max-width: 100%;
+  overflow: auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -112,5 +146,19 @@ main.page {
   .chatkit-shell {
     background: #0a0a0a;
     border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .chatkit-fallback {
+    color: #e5e7eb;
+  }
+
+  .fallback-sub {
+    color: rgba(229, 231, 235, 0.75);
+  }
+
+  .fallback-log {
+    background: #111827;
+    border-color: rgba(255, 255, 255, 0.06);
+    color: #e5e7eb;
   }
 }
